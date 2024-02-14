@@ -148,7 +148,7 @@ import requests
 
 def geocode_address(address):
     # Replace YOUR_API_KEY with your actual API key from the Google Cloud Console
-    api_key = "YOUR_API_KEY"
+    api_key = "AIzaSyCNVmTF4f5lgJSkhUDJY4q4PeDIl-d6mkY"
     endpoint = "https://maps.googleapis.com/maps/api/geocode/json"
 
     params = {
