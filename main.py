@@ -1,5 +1,4 @@
 import time
-
 import pandas as pd
 from googlemaps import Client
 
@@ -44,6 +43,7 @@ def calculate_distance(lat1, lng1, lat2, lng2):
         return distance
 
 
+# Function generates an output csv file
 def write_output(assignments):
   try:
     # Prepare data for new CSV file
@@ -66,6 +66,7 @@ def write_output(assignments):
     return
 
 
+# Function reads the excel file and returns dataframes
 def read_file(excel_file):
   try:
     addresses_per_employee = 0
@@ -93,9 +94,10 @@ def read_file(excel_file):
     return commercial_df, employee_df, addresses_per_employee
 
 
+# Main driver function
 def main():
   try:
-    commercial_df, employee_df, addresses_per_employee = read_file("Addresses.xlsx")
+    commercial_df, employee_df, addresses_per_employee = read_file("Addresses_1000.xlsx")
 
     if addresses_per_employee > 0:
       # Create an empty dictionary to store assignments
@@ -111,6 +113,9 @@ def main():
           if employee_lat is None or employee_lng is None:
             continue
           distances = []
+          print("#########################################################")
+          print("Extracting addresses for employee " + employee_row['Name'])
+          print("#########################################################")
           # Calculate distances for each commercial address
           for commercial_index, commercial_row in commercial_df.iterrows():
             if count_down % 10 == 0:
@@ -168,4 +173,5 @@ def main():
     print(ex)
 
 
+# Calling main driver function
 main()
